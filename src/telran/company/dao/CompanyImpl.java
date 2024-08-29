@@ -31,14 +31,24 @@ public class CompanyImpl implements Company {
 
 	@Override
 	public Employee removeEmployee(int id) {
-		// TODO Auto-generated method stub
-		size--;
+		for (int i = 0; i < size; i++) {
+			if (id == employees[i].getId()) {
+			Employee employee = employees[i];
+			size--;
+			return employee;
+			}
+		}
+
 		return null;
 	}
 
 	@Override
 	public Employee findEmployee(int id) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < size; i++) {
+			if (id == employees[i].getId()) {
+			return employees[i];
+			}
+		}
 		return null;
 	}
 

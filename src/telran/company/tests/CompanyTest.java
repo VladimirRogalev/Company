@@ -40,15 +40,22 @@ class CompanyTest {
 	assertFalse(company.addEmployee(employee));
 	}
 
-//	@Test
-//	void testRemoveEmployee() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testFindEmployee() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	void testRemoveEmployee() {
+		assertNotNull(company.removeEmployee(12478));
+		assertEquals(3, company.size());
+		assertNull(company.removeEmployee(12478));
+		assertNull(company.removeEmployee(9000));
+	
+	}
+
+	@Test
+	void testFindEmployee() {
+		assertNotNull(company.findEmployee(12478));
+		assertNull(company.findEmployee(11111));
+		Employee employee = company.findEmployee(2000);
+		assertEquals(firm[1], employee);
+	}
 //
 //	@Test
 //	void testTotalSalary() {
