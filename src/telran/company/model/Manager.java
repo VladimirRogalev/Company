@@ -25,7 +25,23 @@ public class Manager extends Employee {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-	
-	//TODO check TOstring
+
+	@Override
+	public double calcSalary() {
+		return checkMinSalary(baseSalary / grade);
+	}
+
+	@Override
+	public String toString() {
+//		return "Manager [baseSalary=" + baseSalary + ", grade=" + grade + ", id=" + id + ", firstName=" + firstName
+//				+ ", lastName=" + lastName + ", hours=" + hours + "]";
+//	}
+
+		return super.toString() + "baseSalary=" + baseSalary + ", grade=" + grade;
+	}
+
+	// TODO check TOstring
+
+	// TODO
 
 }

@@ -32,54 +32,53 @@ class CompanyTest {
 
 	@Test
 	void testAddEmployee() {
-	assertFalse(company.addEmployee(firm[3]));
-	Employee employee = new SalesManager(5000, "Sergey", "Ivanov", 182, 160000, 0.2);
-	assertTrue(company.addEmployee(employee));
-	assertEquals(5, company.size());
-	employee = new SalesManager(6000, "Sergey", "Ivanov", 182, 160000, 0.2);
-	assertFalse(company.addEmployee(employee));
+		assertFalse(company.addEmployee(firm[3]));
+		Employee employee = new SalesManager(5000, "Sergey", "Ivanov", 182, 160000, 0.2);
+		assertTrue(company.addEmployee(employee));
+		assertEquals(5, company.size());
+		employee = new SalesManager(6000, "Sergey", "Ivanov", 182, 160000, 0.2);
+		assertFalse(company.addEmployee(employee));
 	}
 
 	@Test
 	void testRemoveEmployee() {
-		assertNotNull(company.removeEmployee(12478));
+		Employee employee = company.removeEmployee(1001);
 		assertEquals(3, company.size());
-		assertNull(company.removeEmployee(12478));
-		assertNull(company.removeEmployee(9000));
-	
+		assertEquals(firm[2], employee);
+		assertNull(company.removeEmployee(1001));
+
 	}
 
 	@Test
 	void testFindEmployee() {
-		assertNotNull(company.findEmployee(12478));
-		assertNull(company.findEmployee(11111));
-		Employee employee = company.findEmployee(2000);
-		assertEquals(firm[1], employee);
+		assertEquals(firm[2], company.findEmployee(1001));
+		assertNull(company.findEmployee(5000));
+
 	}
-//
-//	@Test
-//	void testTotalSalary() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testAverageSalary() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testTotalSales() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testSize() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testPrintEmployees() {
-//		fail("Not yet implemented");
-//	}
+
+	@Test
+	void testTotalSalary() {
+		assertEquals(63104.0, company.totalSalary());
+	}
+
+	@Test
+	void testAverageSalary() {
+		assertEquals(63104.0 / 4, company.averageSalary());
+	}
+
+	@Test
+	void testTotalSales() {
+		assertEquals(105000.0, company.totalSales());
+	}
+
+	@Test
+	void testSize() {
+		assertEquals(4, company.size());
+	}
+
+	@Test
+	void testPrintEmployees() {
+		company.printEmployees();
+	}
 
 }

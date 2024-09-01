@@ -15,6 +15,10 @@ public class WageEmployee extends Employee {
 	public void setWage(double wage) {
 		this.wage = wage;
 	}
-	
+
+	@Override
+	public double calcSalary() {
+		return checkMinSalary(wage * hours);
+	}
 
 }

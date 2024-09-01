@@ -26,4 +26,9 @@ public class SalesManager extends Employee {
 		this.percent = percent;
 	}
 
+	@Override
+	public double calcSalary() {
+		return checkMinSalary(salesValue * percent);
+	}
+
 }

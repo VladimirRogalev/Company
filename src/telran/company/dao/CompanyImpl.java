@@ -1,8 +1,7 @@
 package telran.company.dao;
 
-import java.util.Iterator;
-
 import telran.company.model.Employee;
+import telran.company.model.SalesManager;
 
 public class CompanyImpl implements Company {
 	String name;
@@ -15,13 +14,7 @@ public class CompanyImpl implements Company {
 
 	@Override
 	public boolean addEmployee(Employee employee) {
-		for (int i = 0; i < size; i++) {
-			if (employees[i].getId() == employee.getId()) {
-				return false;
-			}
-
-		}
-		if (employees.length == size) {
+		if (employee == null || size == employees.length || findEmployee(employee.getId()) != null) {
 			return false;
 		}
 		employees[size] = employee;
@@ -32,21 +25,22 @@ public class CompanyImpl implements Company {
 	@Override
 	public Employee removeEmployee(int id) {
 		for (int i = 0; i < size; i++) {
-			if (id == employees[i].getId()) {
-			Employee employee = employees[i];
-			size--;
-			return employee;
+			if (employees[i].getId() == id) {
+				Employee victim = employees[i];
+				employees[i] = employees[size - 1];
+				employees[size - 1] = null;
+				size--;
+				return victim;
 			}
 		}
-
 		return null;
 	}
 
 	@Override
 	public Employee findEmployee(int id) {
 		for (int i = 0; i < size; i++) {
-			if (id == employees[i].getId()) {
-			return employees[i];
+			if (employees[i].getId() == id) {
+				return employees[i];
 			}
 		}
 		return null;
@@ -54,20 +48,32 @@ public class CompanyImpl implements Company {
 
 	@Override
 	public double totalSalary() {
-		// TODO Auto-generated method stub
-		return 0;
+		double sum = 0;
+
+		for (int i = 0; i < size; i++) {
+			sum += employees[i].calcSalary();
+		}
+
+		return sum;
 	}
 
 	@Override
 	public double averageSalary() {
-		// TODO Auto-generated method stub
-		return 0;
+		return totalSalary() / size;
 	}
 
 	@Override
 	public double totalSales() {
-		// TODO Auto-generated method stub
-		return 0;
+		double sum = 0;
+		for (int i = 0; i < size; i++) {
+			if (employees[i] instanceof SalesManager) {
+//			SalesManager sm = (SalesManager)employees[i];
+//			sum += sm.getSalesValue();
+				sum += ((SalesManager) employees[i]).getSalesValue();
+
+			}
+		}
+		return sum;
 	}
 
 	@Override
@@ -77,7 +83,10 @@ public class CompanyImpl implements Company {
 
 	@Override
 	public void printEmployees() {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < size; i++) {
+			System.out.println(employees[i]);
+
+		}
 
 	}
 
