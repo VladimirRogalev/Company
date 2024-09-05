@@ -75,4 +75,5 @@ public abstract class Employee { // abstract class
 		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", hours=" + hours + "]";
 	}
 
+
 }

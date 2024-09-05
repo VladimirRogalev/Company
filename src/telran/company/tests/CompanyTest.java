@@ -75,6 +75,28 @@ class CompanyTest {
 	void testSize() {
 		assertEquals(4, company.size());
 	}
+	
+	@Test 
+	void testFindEmployeeysHoursGreatThan () {
+		Employee [] expected = {firm [0], firm[1], firm [2]};
+		Employee [] actuals = company.findEmployeeysHoursGreatThan(181);
+		assertArrayEquals(expected, actuals);;
+	
+}
+	
+	@Test 
+	void testFindEmployeeysSalaryBetween() {
+		Employee [] expected = { firm[0] };
+		Employee [] actuals = company.findEmployeeysSalaryBetween(8000, 22000);
+		
+		assertArrayEquals(expected, actuals);
+		
+		Employee [] expected1 = {};
+		actuals = company.findEmployeeysSalaryBetween(500, 700);
+		assertArrayEquals(expected1, actuals);
+		
+ 		
+	}
 
 	@Test
 	void testPrintEmployees() {

@@ -1,5 +1,7 @@
 package telran.company.dao;
 
+import java.util.function.Predicate;
+
 import telran.company.model.Employee;
 import telran.company.model.SalesManager;
 
@@ -77,6 +79,33 @@ public class CompanyImpl implements Company {
 	}
 
 	@Override
+	public Employee[] findEmployeeysHoursGreatThan(int hours) {
+		Predicate<Employee> predicateForHours = new Predicate<Employee>() {
+			
+			@Override
+			public boolean test(Employee t) {
+		
+				return t.getHours()> hours;
+			}
+		};
+
+		return findEmployeesByPredicate(predicateForHours);
+	}
+
+	@Override
+	public Employee[] findEmployeeysSalaryBetween(double min, double max) {
+		Predicate<Employee> predicateForSalaryBetween = new Predicate<Employee>() {
+
+			@Override
+			public boolean test(Employee t) {
+				// TODO Auto-generated method stub
+				return t.calcSalary() >= min && t.calcSalary() < max;
+			}
+		};
+		return findEmployeesByPredicate(predicateForSalaryBetween);
+	}
+
+	@Override
 	public int size() {
 		return size;
 	}
@@ -88,6 +117,28 @@ public class CompanyImpl implements Company {
 
 		}
 
+	}
+
+	private Employee[] findEmployeesByPredicate(Predicate<Employee> predicate) {
+		Employee[] res;
+		int counter = 0;
+		for (int i = 0; i < size; i++) {
+			if (predicate.test(employees[i])) {
+				counter++;
+			}
+
+		}
+		res = new Employee[counter];
+		int j = 0;
+		for (int i = 0; i < size; i++) {
+			if (predicate.test(employees[i])) {
+				res[j++] = employees[i];
+
+			}
+
+		}
+
+		return res;
 	}
 
 }

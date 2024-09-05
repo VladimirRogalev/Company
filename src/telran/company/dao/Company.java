@@ -16,6 +16,9 @@ public interface Company {
 	double totalSales();
 
 	int size();
+	
+	Employee [] findEmployeeysHoursGreatThan(int hours);
+	Employee [] findEmployeeysSalaryBetween(double min, double max);
 
 	void printEmployees();
 
