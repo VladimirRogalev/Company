@@ -14,6 +14,7 @@ public class CompanyImpl implements Company {
 		employees = new Employee[capacity];
 	}
 
+//O(n)
 	@Override
 	public boolean addEmployee(Employee employee) {
 		if (employee == null || size == employees.length || findEmployee(employee.getId()) != null) {
@@ -23,7 +24,7 @@ public class CompanyImpl implements Company {
 		size++;
 		return true;
 	}
-
+//O(n)
 	@Override
 	public Employee removeEmployee(int id) {
 		for (int i = 0; i < size; i++) {
@@ -38,6 +39,7 @@ public class CompanyImpl implements Company {
 		return null;
 	}
 
+// O(n)
 	@Override
 	public Employee findEmployee(int id) {
 		for (int i = 0; i < size; i++) {
@@ -47,7 +49,7 @@ public class CompanyImpl implements Company {
 		}
 		return null;
 	}
-
+//O(n)
 	@Override
 	public double totalSalary() {
 		double sum = 0;
@@ -58,12 +60,13 @@ public class CompanyImpl implements Company {
 
 		return sum;
 	}
+	//O(n)
 
 	@Override
 	public double averageSalary() {
 		return totalSalary() / size;
 	}
-
+//O(n)
 	@Override
 	public double totalSales() {
 		double sum = 0;
@@ -77,20 +80,22 @@ public class CompanyImpl implements Company {
 		}
 		return sum;
 	}
-
+// O(n)
 	@Override
 	public Employee[] findEmployeeysHoursGreatThan(int hours) {
 		Predicate<Employee> predicateForHours = new Predicate<Employee>() {
-			
+
 			@Override
 			public boolean test(Employee t) {
-		
-				return t.getHours()> hours;
+
+				return t.getHours() > hours;
 			}
 		};
 
 		return findEmployeesByPredicate(predicateForHours);
 	}
+	
+	//O(n)
 
 	@Override
 	public Employee[] findEmployeeysSalaryBetween(double min, double max) {
@@ -104,12 +109,12 @@ public class CompanyImpl implements Company {
 		};
 		return findEmployeesByPredicate(predicateForSalaryBetween);
 	}
-
+//O(1)
 	@Override
 	public int size() {
 		return size;
 	}
-
+//O(n)
 	@Override
 	public void printEmployees() {
 		for (int i = 0; i < size; i++) {
