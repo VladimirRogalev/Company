@@ -18,7 +18,11 @@ public class WageEmployee extends Employee {
 
 	@Override
 	public double calcSalary() {
+<<<<<<< HEAD
 		return checkMinSalary(hours * wage);
+=======
+		return checkMinSalary(wage * hours);
+>>>>>>> b9d2006fe7740045c9c1f11efdaea6e3aec6e9a7
 	}
 
 }

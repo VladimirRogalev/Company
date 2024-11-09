@@ -27,12 +27,26 @@ public class Manager extends Employee {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	public double calcSalary() {
+		return checkMinSalary(baseSalary / grade);
+	}
+
+	@Override
+>>>>>>> b9d2006fe7740045c9c1f11efdaea6e3aec6e9a7
 	public String toString() {
 		return super.toString() + "baseSalary=" + baseSalary + ", grade=" + grade;
 	}
 
+<<<<<<< HEAD
 	@Override
 	public double calcSalary() {
 		return checkMinSalary(baseSalary * grade);
 	}
+=======
+
+
+
+>>>>>>> b9d2006fe7740045c9c1f11efdaea6e3aec6e9a7
 }
