@@ -1,8 +1,6 @@
 package telran.company.dao;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,7 +18,8 @@ public class CompanySetImpl implements Company {
 		this.capacity = capacity;
 		employees = new HashSet<>();
 	}
- // 
+
+	//
 	@Override
 	public boolean addEmployee(Employee employee) {
 		if (employee == null || capacity == employees.size() || findEmployee(employee.getId()) != null) {
@@ -29,6 +28,7 @@ public class CompanySetImpl implements Company {
 		return employees.add(employee);
 
 	}
+
 //
 	@Override
 	public Employee removeEmployee(int id) {
@@ -36,6 +36,7 @@ public class CompanySetImpl implements Company {
 		employees.remove(victim);
 		return victim;
 	}
+
 //
 	@Override
 	public Employee findEmployee(int id) {
@@ -46,6 +47,7 @@ public class CompanySetImpl implements Company {
 		}
 		return null;
 	}
+
 //
 	@Override
 	public double totalSalary() {
@@ -55,6 +57,7 @@ public class CompanySetImpl implements Company {
 		}
 		return sum;
 	}
+
 // 
 	@Override
 	public double averageSalary() {
@@ -67,8 +70,6 @@ public class CompanySetImpl implements Company {
 
 		for (Employee employee : employees) {
 			if (employee instanceof SalesManager) {
-//				SalesManager sm = (SalesManager) employees[i];
-//				sum+= sm.getSalesValue
 				sum += ((SalesManager) employee).getSalesValue();
 			}
 		}
@@ -96,13 +97,7 @@ public class CompanySetImpl implements Company {
 
 	@Override
 	public Employee[] findEmployeesSalaryBetween(double min, double max) {
-//		Predicate<Employee> predicate = new Predicate<Employee>() {
-//
-//			@Override
-//			public boolean test(Employee t) {
-//				return t.calcSalary() >= min && t.calcSalary() < max;
-//			}
-//		};
+
 		return findEmployeesByPredicate(t -> t.calcSalary() >= min && t.calcSalary() < max);
 	}
 
