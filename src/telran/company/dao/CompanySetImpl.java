@@ -1,6 +1,8 @@
 package telran.company.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +18,7 @@ public class CompanySetImpl implements Company {
 
 	public CompanySetImpl(int capacity) {
 		this.capacity = capacity;
-		employees = new HashSet<Employee>();
+		employees = new HashSet<>();
 	}
  // 
 	@Override
@@ -105,13 +107,14 @@ public class CompanySetImpl implements Company {
 	}
 
 	private Employee[] findEmployeesByPredicate(Predicate<Employee> predicate) {
-		List<Employee> copyEmployees = new ArrayList<Employee>();
+		List<Employee> copyEmployees = new ArrayList<>();
 
 		for (Employee employee : employees) {
 			if (predicate.test(employee)) {
 				copyEmployees.add(employee);
 			}
 		}
+		copyEmployees.sort((o1, o2) -> Integer.compare(o1.getId(), o2.getId()));
 		return copyEmployees.toArray(new Employee[0]);
 	}
 
