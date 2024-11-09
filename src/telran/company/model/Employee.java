@@ -2,11 +2,9 @@ package telran.company.model;
 
 import java.util.Objects;
 
-<<<<<<< HEAD
-public abstract class Employee {
-=======
+
 public abstract class Employee { // abstract class
->>>>>>> b9d2006fe7740045c9c1f11efdaea6e3aec6e9a7
+
 	protected final int id;
 	protected String firstName;
 	protected String lastName;
@@ -58,14 +56,13 @@ public abstract class Employee { // abstract class
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public String toString() {
 		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", hours=" + hours + "]";
 	}
 
 	@Override
-=======
->>>>>>> b9d2006fe7740045c9c1f11efdaea6e3aec6e9a7
+
 	public int hashCode() {
 		return Objects.hash(id);
 	}
@@ -82,13 +79,8 @@ public abstract class Employee { // abstract class
 		return id == other.id;
 	}
 
-<<<<<<< HEAD
-=======
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", hours=" + hours + "]";
-	}
 
 
->>>>>>> b9d2006fe7740045c9c1f11efdaea6e3aec6e9a7
+
+
 }
