@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import telran.company.dao.Company;
 import telran.company.dao.CompanyListImpl;
+import telran.company.dao.CompanyMapImpl;
 import telran.company.model.Employee;
 import telran.company.model.Manager;
 import telran.company.model.SalesManager;
@@ -18,7 +19,7 @@ class CompanyTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		company = new CompanyListImpl(5);
+		company = new CompanyMapImpl(5);
 		firm = new Employee[4];
 		firm[0] = new Manager(1000, "John", "Smith", 182, 20_000, 2);
 		firm[1] = new WageEmployee(2000, "Mary", "Smith", 182, 40);
